@@ -17,11 +17,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy all source code
 COPY . /app/backend
 
-# Apply database migrations
+# Apply database migrations (ensure the database is setup before running the server)
 RUN python3 manage.py migrate
 
 # Expose the port Django will run on
 EXPOSE 8000
 
-# Start Django application (use python3 instead of python)
+# Start the Django application (ensure it stays running)
 CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
